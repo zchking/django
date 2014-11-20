@@ -158,6 +158,33 @@ class WSGIRequest(http.HttpRequest):
 
 
 class WSGIHandler(base.BaseHandler):
+    """
+      1.What is WSGI?
+        An interface specification(规范) by which server and application communicate.
+
+        Both server and application interface sides are specified. It does not exist anywhere else other than as words in the PEP 3333. If an application (or framework or toolkit) is written to the WSGI spec then it will run on any server written to that spec.
+
+        A WSGI server (meaning WSGI compliant) only receives the request from the client, pass it to the application and then send the response provided by the application to the client. It does nothing else. All the gory details must be supplied by the application or middleware.
+
+
+      2.The Application spec:
+        The WSGI application interface is implemented as a callable object: a function, a method, a class or an instance with a __call__ method. That callable must accept two positional parameters:
+
+        A dictionary containing CGI like variables; and
+        a callback function that will be used by the application to send HTTP status code/message and HTTP headers to the server.
+        and must return the response body to the server as strings wrapped in an iterable.
+      
+      3.Notice the response:
+        If the last script worked change the return line from:
+
+          return [response_body]
+        to:
+
+          return response_body
+
+        Run again.Noticed it slower? What happened is that the server iterated over the string sending a single byte at a time to the client. 
+        ***So don't forget to *wrap the response* in a better performance iterable like a list***.
+    """
     initLock = Lock()
     request_class = WSGIRequest
 
