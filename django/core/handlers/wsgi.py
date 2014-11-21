@@ -243,6 +243,26 @@ def get_script_name(environ):
     the script name prior to any rewriting (so it's the script name as seen
     from the client's perspective), unless the FORCE_SCRIPT_NAME setting is
     set (to anything).
+
+
+    @Somethings about charset codecs:
+       1.python2 -> str(As the bytes of some charset codes(utf-8,gbk))
+                    unicode(unicode's str(characters))
+         python3 -> str(unicode's str(characters))
+                    bytes(As the bytes of some charset codes(utf-8,gbk))
+
+       2.about encode & decode
+         decode to unicode and encode from unicode to utf-8 ...
+         
+         python2 -> encode 
+                    unicode ->str(such as utf-8)
+                 -> decode
+                    str(such as utf-8) -> unicode
+         python3 -> encode
+                    str(unicode) -> bytes(such as utf-8)
+                 -> decode 
+                    bytes(such as utf-8) -> str(unicode)
+                    
     """
     if settings.FORCE_SCRIPT_NAME is not None:
         return force_text(settings.FORCE_SCRIPT_NAME)
