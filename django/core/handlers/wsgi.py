@@ -184,6 +184,46 @@ class WSGIHandler(base.BaseHandler):
 
         Run again.Noticed it slower? What happened is that the server iterated over the string sending a single byte at a time to the client. 
         ***So don't forget to *wrap the response* in a better performance iterable like a list***.
+
+
+
+      4.WSGI environ Variables
+
+        ->REQUEST_METHOD
+          The HTTP request method, such as "GET" or "POST" . This cannot ever be an empty string, and so is always required.
+
+        ->SCRIPT_NAME
+          The initial portion of the request URL's "path" that corresponds to the application object, so that the application knows its virtual "location". 
+          This may be an empty string, if the application corresponds to the "root" of the server.
+
+        ->PATH_INFO
+          The remainder of the request URL's "path", designating the virtual "location" of the request's target within the application.
+          This may be an empty string, if the request URL targets the application root and does not have a trailing slash.
+
+        ->QUERY_STRING
+          The portion of the request URL that follows the "?" , if any. May be empty or absent.
+
+        ->CONTENT_TYPE
+          The contents of any Content-Type fields in the HTTP request. May be empty or absent.
+
+        ->CONTENT_LENGTH
+          The contents of any Content-Length fields in the HTTP request. May be empty or absent.
+
+        ->SERVER_NAME , SERVER_PORT
+          When combined with SCRIPT_NAME and PATH_INFO , these two strings can be used to complete the URL. 
+          Note, however, that HTTP_HOST , if present, should be used in preference to SERVER_NAME for reconstructing the request URL. 
+          See the URL Reconstruction section below for more detail. SERVER_NAME and SERVER_PORT can never be empty strings, and so are always required.
+
+        ->SERVER_PROTOCOL
+          The version of the protocol the client used to send the request. 
+          Typically this will be something like "HTTP/1.0" or "HTTP/1.1" and may be used by the application to determine how to treat any HTTP request headers. 
+          (This variable should probably be called REQUEST_PROTOCOL , since it denotes the protocol used in the request, 
+          and is not necessarily the protocol that will be used in the server's response. 
+          However, for compatibility with CGI we have to keep the existing name.)
+
+        ->HTTP_ Variables
+          Variables corresponding to the client-supplied HTTP request headers (i.e., variables whose names begin with "HTTP_" ). 
+          The presence or absence of these variables should correspond with the presence or absence of the appropriate HTTP header in the request.
     """
     initLock = Lock()
     request_class = WSGIRequest
