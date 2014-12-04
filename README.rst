@@ -1,43 +1,18 @@
 Django is a high-level Python Web framework that encourages rapid development
-and clean, pragmatic design. Thanks for checking it out.
+and clean, pragmatic design. And this is for illustrating the django and
+something about the common algorithm.
+Thanks for checking it out.
 
-All documentation is in the "docs" directory and online at
-https://docs.djangoproject.com/en/stable/. If you're just getting started,
-here's how we recommend you read the docs:
+该项目主要用于分析django框架的底层实现，以对应代码位置添加相关详细说明为主要实现方式。
 
-* First, read docs/intro/install.txt for instructions on installing Django.
+欢迎大家在自己熟悉的代码处一起添加相关注解，该项目旨在依托于django框架更好的理解Python编程方式，
+底层网络，模版渲染，url分发等的实现方式.
 
-* Next, work through the tutorials in order (docs/intro/tutorial01.txt,
-  docs/intro/tutorial02.txt, etc.).
 
-* If you want to set up an actual deployment server, read
-  docs/howto/deployment/index.txt for instructions.
+欢迎交流,欢迎纠正！
 
-* You'll probably want to read through the topical guides (in docs/topics)
-  next; from there you can jump to the HOWTOs (in docs/howto) for specific
-  problems, and check out the reference (docs/ref) for gory details.
+Email:zchcandid@gmail.com
 
-* See docs/README for instructions on building an HTML version of the docs.
 
-Docs are updated rigorously. If you find any problems in the docs, or think
-they should be clarified in any way, please take 30 seconds to fill out a
-ticket here: https://code.djangoproject.com/newticket
 
-To get more help:
 
-* Join the #django channel on irc.freenode.net. Lots of helpful people hang out
-  there. Read the archives at http://django-irc-logs.com/.
-
-* Join the django-users mailing list, or read the archives, at
-  https://groups.google.com/group/django-users.
-
-To contribute to Django:
-
-* Check out https://www.djangoproject.com/community/ for information about
-  getting involved.
-
-To run Django's test suite:
-
-* Follow the instructions in the "Unit tests" section of
-  docs/internals/contributing/writing-code/unit-tests.txt, published online at
-  https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/unit-tests/#running-the-unit-tests
